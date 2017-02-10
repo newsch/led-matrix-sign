@@ -16,7 +16,7 @@ class RunText(SampleBase):
         font.LoadFont("an_oddly_specific_font_mono.bdf")
         textColor = graphics.Color(255, 0, 0)
         pos = offscreen_canvas.width
-        my_text = self.args.text
+        my_text = self.args.text.upper()
 
         while True:
             offscreen_canvas.Clear()
