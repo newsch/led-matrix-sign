@@ -23,14 +23,6 @@ class SampleBase(object):
         self.parser.add_argument("--led-slowdown-gpio", action="store", help="Slow down writing to GPIO. Range: 1..100. Default: 1", choices=range(3), type=int)
         self.parser.add_argument("--led-no-hardware-pulse", action="store", help="Don't use hardware pin-pulse generation")
 
-
-    def usleep(self, value):
-        time.sleep(value / 1000000.0)
-
-    def run(self):
-        print("Running")
-
-    def process(self):
         self.args = self.parser.parse_args()
 
         options = RGBMatrixOptions()
@@ -53,6 +45,14 @@ class SampleBase(object):
 
         self.matrix = RGBMatrix(options = options)
 
+
+    def usleep(self, value):
+        time.sleep(value / 1000000.0)
+
+    def run(self):
+        print("Running")
+
+    def process(self):
         try:
             # Start loop
             print("Press CTRL-C to stop sample")
