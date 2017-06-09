@@ -48,7 +48,7 @@ class Writer(SampleBase):
     def run(self):
         self.write('HEYO')
 
-    def write(self, text, timeLength=2, justification='CENTER'):
+    def write(self, text, timeLength=4, justification='CENTER'):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
         font.LoadFont("an_oddly_specific_font_mono.bdf")
@@ -56,7 +56,7 @@ class Writer(SampleBase):
         my_text = text.upper()
 
         # hacky way to get length with mono font
-        letter_width = 6
+        letter_width = 7
         letter_spacing = 2
         text_length = len(my_text) * (letter_width + letter_spacing)
         pos = offscreen_canvas.width - text_length
