@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # Display a runtext with double-buffering.
-from samplebase import SampleBase
+from signbase import SignBase
 from rgbmatrix import graphics
 import time
 import socket
@@ -38,8 +38,8 @@ class Writer(SampleBase):
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(2)
-        
-        
+
+
         # stopWriting = False
         # while not stopWriting:
         #     self.offscreen_canvas.Clear()
