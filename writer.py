@@ -21,12 +21,14 @@ class Writer(SampleBase):
         self.queue.append(message)
 
     def writeAllFromQueue(self):
-        i = 0
-        while i < len(self.queue):
-            self.write(queue[i])
-            if (i)
+        pass
+        # i = 0
+        # while i < len(self.queue):
+        #     self.write(queue[i])
+        #     if (i)
 
-    def writeLatestFromQueue
+    def writeLatestFromQueue():
+        pass
 
     def write(self, text, continuous=False):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
@@ -37,6 +39,7 @@ class Writer(SampleBase):
         my_text = text.upper()
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+        time.sleep(2)
 
         # stopWriting = False
         # while not stopWriting:
@@ -53,7 +56,7 @@ class Writer(SampleBase):
 
 if __name__ == '__main__':
     writer = Writer()
-    if not writer.proccess():
+    if not writer.process():
         print('neat')
     else:
         print('Printing Welcome Candidates')
