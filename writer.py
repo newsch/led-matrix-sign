@@ -30,14 +30,16 @@ class Writer(SampleBase):
     def write(self, text, continuous=False):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
-        # font.LoadFont("an_oddly_specific_font_mono.bdf")
+        font.LoadFont("an_oddly_specific_font_mono.bdf")
         textColor = graphics.Color(255, 0, 0)
-        pos = offscreen_canvas.width
+        pos = offscreen_canvas.width - 20
         my_text = text.upper()
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+        offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(2)
-
+        
+        
         # stopWriting = False
         # while not stopWriting:
         #     self.offscreen_canvas.Clear()
