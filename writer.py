@@ -49,6 +49,7 @@ class Writer(SampleBase):
         self.write('HEYO')
 
     def write(self, text, timeLength=4, justification='CENTER'):
+        print('Writing text: ' + text)
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
         font.LoadFont("an_oddly_specific_font_mono.bdf")
@@ -58,11 +59,16 @@ class Writer(SampleBase):
         # hacky way to get length with mono font
         letter_width = 7
         letter_spacing = 2
-        text_length = len(my_text) * (letter_width + letter_spacing)
-        pos = offscreen_canvas.width - text_length
+        text_width = len(my_text) * (letter_width + letter_spacing)
+        screen_width = 196
+        just_calc = {  # justification calculations
+            'LEFT': lambda t, s: 0,
+            'CENTER': lambda t, s: (t - s) / 2,
+            'RIGHT': lambda t, s: s,
+        }
+        pos = just_calc[justification](offscreen_canvas.width, text_width)
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
-        print('Writing text: ' + text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(timeLength)
         print('Stopping')
