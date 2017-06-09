@@ -48,7 +48,7 @@ class Writer(SampleBase):
     def run(self):
         self.write('HEYO')
 
-    def write(self, text, timeLength=4, justification='CENTER'):
+    def write(self, text, timeLength=4, justification='RIGHT'):
         print('Writing text: ' + text)
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
@@ -60,13 +60,13 @@ class Writer(SampleBase):
         letter_width = 7
         letter_spacing = 2
         text_width = len(my_text) * (letter_width + letter_spacing)
-        screen_width = 196
+        screen_width = 192
         just_calc = {  # justification calculations
             'LEFT': lambda t, s: 0,
-            'CENTER': lambda t, s: (t - s) / 2,
-            'RIGHT': lambda t, s: s,
+            'CENTER': lambda t, s: (s - t) / 2,
+            'RIGHT': lambda t, s: s - t,
         }
-        pos = just_calc[justification](offscreen_canvas.width, text_width)
+        pos = just_calc[justification](text_width, offscreen_canvas.width)
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
