@@ -27,6 +27,25 @@ class SampleBase(object):
     def run(self):
         print("Running")
 
+    def initialize(self):
+        if self.led_gpio_mapping != None:
+          options.hardware_mapping = self.led_gpio_mapping
+        options.rows = self.led_rows
+        options.chain_length = self.led_chain
+        options.parallel = self.led_parallel
+        options.pwm_bits = self.led_pwm_bits
+        options.brightness = self.led_brightness
+        options.pwm_lsb_nanoseconds = self.led_pwm_lsb_nanoseconds
+        if self.led_show_refresh:
+          options.show_refresh_rate = 1
+
+        if self.led_slowdown_gpio != None:
+            options.gpio_slowdown = self.led_slowdown_gpio
+        if self.led_no_hardware_pulse:
+          options.disable_hardware_pulsing = True
+
+        self.matrix = RGBMatrix(options = options)
+
     def process(self):
 
         options = RGBMatrixOptions()
