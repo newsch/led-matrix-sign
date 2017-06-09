@@ -57,7 +57,7 @@ class Writer(SampleBase):
 
         # hacky way to get length with mono font
         letter_width = 6
-        letter_spacing = 1
+        letter_spacing = 2
         text_length = len(my_text) * letter_width * letter_spacing
         pos = offscreen_canvas.width - text_length
 
