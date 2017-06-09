@@ -28,6 +28,8 @@ class SampleBase(object):
         print("Running")
 
     def initialize(self):
+        options = RGBMatrixOptions()
+
         if self.led_gpio_mapping != None:
           options.hardware_mapping = self.led_gpio_mapping
         options.rows = self.led_rows
