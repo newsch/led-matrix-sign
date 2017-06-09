@@ -48,18 +48,23 @@ class Writer(SampleBase):
     def run(self):
         self.write('HEYO')
 
-    def write(self, text, continuous=False):
+    def write(self, text, timeLength=2, justification='CENTER'):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
         font.LoadFont("an_oddly_specific_font_mono.bdf")
         textColor = graphics.Color(255, 0, 0)
-        pos = offscreen_canvas.width - 40
         my_text = text.upper()
+
+        # hacky way to get length with mono font
+        letter_width = 6
+        letter_spacing = 1
+        text_length = len(my_text) * letter_width * letter_spacing
+        pos = offscreen_canvas.width - text_length
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
         print('Writing text: ' + text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-        time.sleep(2)
+        time.sleep(timeLength)
         print('Stopping')
         # rebase test comment
 
