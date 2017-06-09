@@ -36,8 +36,10 @@ class Writer(SampleBase):
         my_text = text.upper()
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+        print('Writing text: ' + text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(2)
+        print('Stopping')
 
 
         # stopWriting = False
