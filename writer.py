@@ -10,12 +10,6 @@ from datetime import datetime
 class Writer(SampleBase):
     def __init__(self):
         super(Writer, self).__init__()
-        self.text = 'HEY'
-        self.queue = []
-        self.offscreen_canvas = self.matrix.CreateFrameCanvas()
-        self.font = graphics.Font()
-        self.font.LoadFont("an_oddly_specific_font_mono.bdf")
-        self.textColor = graphics.Color(255, 0, 0)
 
     def addToQueue(self, message):
         self.queue.append(message)
