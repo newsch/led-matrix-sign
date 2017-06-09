@@ -21,7 +21,15 @@ def add_message_to_queue():
     if request.method == 'POST':
         requested_message = request.form['message']
         print(requested_message)
-        writer.write(requested_message)
+        writer.addToQueue(requested_message)
+        try:
+            # Start loop
+            print("Press CTRL-C to stop")
+            writer.writeAllFromQueue(requested_message)
+        except KeyboardInterrupt:
+            print("Exiting\n")
+            sys.exit(0)
+>>>>>>> Add writeFromQueue and keyboard interrupt
     else:
         print('Method is not POST')
     return render_template('index.html')

@@ -36,11 +36,15 @@ class Writer(SampleBase):
         self.queue.append(message)
 
     def writeAllFromQueue(self):
-        pass
+        # pass
         # i = 0
         # while i < len(self.queue):
         #     self.write(queue[i])
         #     if (i)
+        for message in self.queue:
+            writeScrolling(message)
+            queue.remove(message)
+
 
     def writeLatestFromQueue():
         pass
