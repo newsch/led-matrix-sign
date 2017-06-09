@@ -107,7 +107,7 @@ class Writer(SampleBase):
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
 
         while pos + text_width > offscreen_canvas.width:
-            self.offscreen_canvas.Clear()
+            offscreen_canvas.Clear()
             graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
             pos -= 1
             time.sleep(sleepTime)
