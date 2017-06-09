@@ -58,7 +58,7 @@ class Writer(SampleBase):
         # hacky way to get length with mono font
         letter_width = 6
         letter_spacing = 2
-        text_length = len(my_text) * letter_width * letter_spacing
+        text_length = len(my_text) * (letter_width + letter_spacing)
         pos = offscreen_canvas.width - text_length
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
