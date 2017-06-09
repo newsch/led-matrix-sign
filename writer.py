@@ -88,7 +88,7 @@ class Writer(SampleBase):
         #     time.sleep(0.02)
         #     offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
 
-    def writeScrolling(self, text, sleepTime='0.02'):
+    def writeScrolling(self, text, sleepTime=0.02):
         print('Writing text: ' + text)
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
@@ -106,7 +106,7 @@ class Writer(SampleBase):
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
 
-        while pos + text_width > offscreen_canvas.width:
+        while pos + text_width > 0:
             offscreen_canvas.Clear()
             graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
             pos -= 1
