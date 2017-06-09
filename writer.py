@@ -10,6 +10,27 @@ from datetime import datetime
 class Writer(SampleBase):
     def __init__(self):
         super(Writer, self).__init__()
+        self.args = self.parser.parse_args()
+
+        options = RGBMatrixOptions()
+
+        if self.args.led_gpio_mapping != None:
+          options.hardware_mapping = self.args.led_gpio_mapping
+        options.rows = self.args.led_rows
+        options.chain_length = self.args.led_chain
+        options.parallel = self.args.led_parallel
+        options.pwm_bits = self.args.led_pwm_bits
+        options.brightness = self.args.led_brightness
+        options.pwm_lsb_nanoseconds = self.args.led_pwm_lsb_nanoseconds
+        if self.args.led_show_refresh:
+          options.show_refresh_rate = 1
+
+        if self.args.led_slowdown_gpio != None:
+            options.gpio_slowdown = self.args.led_slowdown_gpio
+        if self.args.led_no_hardware_pulse:
+          options.disable_hardware_pulsing = True
+
+        self.matrix = RGBMatrix(options = options)
 
     def addToQueue(self, message):
         self.queue.append(message)
