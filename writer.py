@@ -20,9 +20,13 @@ class Writer(SampleBase):
     def addToQueue(self, message):
         self.queue.append(message)
 
-    def writeFromQueue(self):
-        for message in self.queue:
-            self.write(message)
+    def writeAllFromQueue(self):
+        i = 0
+        while i < len(self.queue):
+            self.write(queue[i])
+            if (i)
+
+    def writeLatestFromQueue
 
     def write(self, text, continuous=False):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
@@ -32,24 +36,27 @@ class Writer(SampleBase):
         pos = offscreen_canvas.width
         my_text = text.upper()
 
-        stopWriting = False
-        while not stopWriting:
-            self.offscreen_canvas.Clear()
-            len = graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
-            pos -= 1
-            if continuous and pos == offscreen_canvas.width - len:
-                stopWriting = True
-            if (pos + len < 0):
-                stopWriting = True
+        graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
 
-            time.sleep(0.02)
-            offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+        # stopWriting = False
+        # while not stopWriting:
+        #     self.offscreen_canvas.Clear()
+        #     len = graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+        #     pos -= 1
+        #     if continuous and pos == offscreen_canvas.width - len:
+        #         stopWriting = True
+        #     if (pos + len < 0):
+        #         stopWriting = True
+        #
+        #     time.sleep(0.02)
+        #     offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
 
 if __name__ == '__main__':
     writer = Writer()
     if not writer.proccess():
         print('neat')
     else:
+        print('Printing Welcome Candidates')
         writer.write('Welcome Candidates!')
 
 # exec_time = datetime(2017,2,17,1,46)
@@ -59,4 +66,4 @@ if __name__ == '__main__':
 #
 #     sleep(60)
 
-welcome_message()
+# welcome_message()
