@@ -47,7 +47,7 @@ class SampleBase(object):
           options.disable_hardware_pulsing = True
 
         # don't drop privileges
-        options.drop_privileges = -1
+        options.drop_privileges = False
 
         self.matrix = RGBMatrix(options = options)
 
