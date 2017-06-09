@@ -11,8 +11,8 @@ class SampleBase(object):
     def __init__(self, *args, **kwargs):
         self.parser = argparse.ArgumentParser()
 
-        self.parser.add_argument("-r", "--led-rows", action="store", help="Display rows. 16 for 16x32, 32 for 32x32. Default: 16", default=16, type=int)
-        self.parser.add_argument("-c", "--led-chain", action="store", help="Daisy-chained boards. Default: 6.", default=6, type=int)
+        self.parser.add_argument("-r", "--led-rows", action="store", help="Display rows. 16 for 16x32, 32 for 32x32. Default: 32", default=32, type=int)
+        self.parser.add_argument("-c", "--led-chain", action="store", help="Daisy-chained boards. Default: 1.", default=1, type=int)
         self.parser.add_argument("-P", "--led-parallel", action="store", help="For Plus-models or RPi2: parallel chains. 1..3. Default: 1", default=1, type=int)
         self.parser.add_argument("-p", "--led-pwm-bits", action="store", help="Bits used for PWM. Something between 1..11. Default: 11", default=11, type=int)
         self.parser.add_argument("-b", "--led-brightness", action="store", help="Sets brightness level. Default: 100. Range: 1..100", default=100, type=int)
@@ -23,6 +23,14 @@ class SampleBase(object):
         self.parser.add_argument("--led-slowdown-gpio", action="store", help="Slow down writing to GPIO. Range: 1..100. Default: 1", choices=range(3), type=int)
         self.parser.add_argument("--led-no-hardware-pulse", action="store", help="Don't use hardware pin-pulse generation")
 
+
+    def usleep(self, value):
+        time.sleep(value / 1000000.0)
+
+    def run(self):
+        print("Running")
+
+    def process(self):
         self.args = self.parser.parse_args()
 
         options = RGBMatrixOptions()
@@ -45,14 +53,6 @@ class SampleBase(object):
 
         self.matrix = RGBMatrix(options = options)
 
-
-    def usleep(self, value):
-        time.sleep(value / 1000000.0)
-
-    def run(self):
-        print("Running")
-
-    def process(self):
         try:
             # Start loop
             print("Press CTRL-C to stop sample")
