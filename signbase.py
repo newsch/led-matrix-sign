@@ -46,6 +46,9 @@ class SampleBase(object):
         if self.led_no_hardware_pulse:
           options.disable_hardware_pulsing = True
 
+        # don't drop privileges
+        options.drop_privileges = -1
+
         self.matrix = RGBMatrix(options = options)
 
     def process(self):
