@@ -46,7 +46,8 @@ class Writer(SampleBase):
         pass
 
     def run(self):
-        self.writeScrolling('HEYO')
+        # self.writeScrolling('HEYO')
+        pass
 
     def write(self, text, timeLength=4, justification='RIGHT'):
         print('Writing text: ' + text)

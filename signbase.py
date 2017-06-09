@@ -71,6 +71,8 @@ class SampleBase(object):
         if self.led_no_hardware_pulse:
           options.disable_hardware_pulsing = True
 
+        options.drop_privileges = False
+
         self.matrix = RGBMatrix(options = options)
 
         try:

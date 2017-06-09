@@ -8,6 +8,8 @@ from writer import Writer
 app = Flask(__name__)
 
 writer = Writer()
+# writer.process()
+writer.initialize()
 
 @app.route('/')
 def index():
@@ -19,7 +21,7 @@ def add_message_to_queue():
     if request.method == 'POST':
         requested_message = request.form['message']
         print(requested_message)
-        writer.writeScrolling(requested_message)
+        writer.write(requested_message)
     else:
         print('Method is not POST')
     return render_template('index.html')
