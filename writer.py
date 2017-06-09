@@ -46,7 +46,7 @@ class Writer(SampleBase):
         pass
 
     def run(self):
-        self.write('HEYO')
+        self.writeScrolling('HEYO')
 
     def write(self, text, timeLength=4, justification='RIGHT'):
         print('Writing text: ' + text)
@@ -87,6 +87,31 @@ class Writer(SampleBase):
         #
         #     time.sleep(0.02)
         #     offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+
+    def writeScrolling(self, text, sleepTime='0.02'):
+        print('Writing text: ' + text)
+        offscreen_canvas = self.matrix.CreateFrameCanvas()
+        font = graphics.Font()
+        font.LoadFont("an_oddly_specific_font_mono.bdf")
+        textColor = graphics.Color(255, 0, 0)
+        my_text = text.upper()
+
+        # hacky way to get length with mono font
+        letter_width = 7
+        letter_spacing = 2
+        text_width = len(my_text) * (letter_width + letter_spacing)
+
+        pos = offscreen_canvas.width
+
+        graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+        offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
+
+        while pos + text_width > offscreen_canvas.width:
+            self.offscreen_canvas.Clear()
+            len = graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
+            pos -= 1
+            time.sleep(sleepTime)
+            offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
 
 if __name__ == '__main__':
     writer = Writer()
