@@ -10,6 +10,7 @@ from datetime import datetime
 class Writer(SampleBase):
     def __init__(self):
         super(Writer, self).__init__()
+        self.queue = []
         # self.args = self.parser.parse_args()
         #
         # options = RGBMatrixOptions()
@@ -43,7 +44,7 @@ class Writer(SampleBase):
         #     if (i)
         for message in self.queue:
             writeScrolling(message)
-            queue.remove(message)
+            self.queue.remove(message)
 
 
     def writeLatestFromQueue():
