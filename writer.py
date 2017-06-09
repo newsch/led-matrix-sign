@@ -53,7 +53,7 @@ class Writer(SampleBase):
         font = graphics.Font()
         font.LoadFont("an_oddly_specific_font_mono.bdf")
         textColor = graphics.Color(255, 0, 0)
-        pos = offscreen_canvas.width - 20
+        pos = offscreen_canvas.width - 40
         my_text = text.upper()
 
         graphics.DrawText(offscreen_canvas, font, pos, 9, textColor, my_text)
