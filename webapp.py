@@ -29,7 +29,6 @@ def add_message_to_queue():
         except KeyboardInterrupt:
             print("Exiting\n")
             sys.exit(0)
->>>>>>> Add writeFromQueue and keyboard interrupt
     else:
         print('Method is not POST')
     return render_template('index.html')
