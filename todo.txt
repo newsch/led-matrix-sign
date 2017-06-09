@@ -1,0 +1,2 @@
+run this on boot:
+sudo rpi-rgb-led-matrix/examples-api-use/demo -D0 -r 32 -c 6
