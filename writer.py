@@ -10,7 +10,7 @@ from datetime import datetime
 class Writer(SampleBase):
     def __init__(self):
         super(Writer, self).__init__()
-        self.args = self.parser.parse_args()
+        # self.args = self.parser.parse_args()
 
         options = RGBMatrixOptions()
 
