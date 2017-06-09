@@ -24,10 +24,13 @@ class Writer(SampleBase):
     def writeLatestFromQueue():
         pass
 
+    def run():
+        write('HEYO')
+
     def write(self, text, continuous=False):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
-        font.LoadFont("an_oddly_specific_font_mono.bdf")
+        # font.LoadFont("an_oddly_specific_font_mono.bdf")
         textColor = graphics.Color(255, 0, 0)
         pos = offscreen_canvas.width
         my_text = text.upper()
@@ -53,8 +56,8 @@ if __name__ == '__main__':
     if not writer.process():
         print('neat')
     else:
-        print('Printing Welcome Candidates')
-        writer.write('Welcome Candidates!')
+        print('finished running.')
+        # writer.write('Welcome Candidates!')
 
 # exec_time = datetime(2017,2,17,1,46)
 # while True:
