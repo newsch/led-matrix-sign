@@ -24,8 +24,8 @@ class Writer(SampleBase):
     def writeLatestFromQueue():
         pass
 
-    def run():
-        write('HEYO')
+    def run(self):
+        self.write('HEYO')
 
     def write(self, text, continuous=False):
         offscreen_canvas = self.matrix.CreateFrameCanvas()
