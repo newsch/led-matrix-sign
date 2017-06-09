@@ -40,6 +40,7 @@ class Writer(SampleBase):
         offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
         time.sleep(2)
         print('Stopping')
+        # rebase test comment
 
 
         # stopWriting = False
